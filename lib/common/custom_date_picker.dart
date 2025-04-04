@@ -225,11 +225,84 @@ Future<DateTime?> customDatePicker({
                         color: Colors.white,
                       ),
                     ),
+                    builders: CalendarBuilders(
+                      todayDayBuilder: (context, date, _) {
+                        return Container(
+                          margin: const EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: AppTheme.blueDark, // Border color
+                              width: 2, // Border thickness
+                            ),
+                          ),
+                          child: Text(
+                            '${date.day}',
+                            style: AppTheme.headingSmall.copyWith(
+                              color: AppTheme.blueDark, // Text color for today
+                            ),
+                          ),
+                        );
+                      },
+                      selectedDayBuilder: (context, date, _) {
+                        return Container(
+                          margin: const EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppTheme.blueDark,
+                          ),
+                          child: Text(
+                            '${date.day}',
+                            style: AppTheme.headingSmall.copyWith(
+                              color: Colors.white, // Text color for today
+                            ),
+                          ),
+                        );
+                      },
+                      dayBuilder: (context, date, _) {
+                        bool isDisabled=true;
+                        if(!isJoiningDate){
+                          isDisabled = date.isBefore(selectedDate!);
+                        }else{
+                          isDisabled=false;
+                        }
+                        return Container(
+                          margin: const EdgeInsets.all(6),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent, // Gray background for disabled dates
+                          ),
+                          child: Text(
+                            '${date.day}',
+                            style: !isJoiningDate?AppTheme.headingSmall.copyWith(
+                              color: isDisabled ? AppTheme.greyDark : AppTheme.lightBlack, // Gray for disabled, default for others
+                            ):AppTheme.headingSmall.copyWith(
+                              color: AppTheme.lightBlack, // Gray for disabled, default for others
+                            ),
+                          ),
+                        );
+                      },
+
+                    ),
                     onDaySelected: (day, events, holidays) {
-                      setState(() {
-                        day = day.toLocal();
-                        selectedDate = (DateTime(day.year, day.month, day.day));
-                      });
+                      if(!isJoiningDate){
+                        if (day.isBefore(selectedDate!)) {
+                          return; // Ignore selection for past dates
+                        }
+                        setState(() {
+                          day = day.toLocal();
+                          selectedDate = DateTime(day.year, day.month, day.day);
+                        });
+                      }else{
+                        setState(() {
+                          day = day.toLocal();
+                          selectedDate = DateTime(day.year, day.month, day.day);
+                        });
+                      }
+
                     },
                   ),
                   const SizedBox(height: 16),

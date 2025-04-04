@@ -124,7 +124,7 @@ class _EditEmployeeStartAndEndDateState
               widget.focusScopeNode.unfocus();
               DateTime? date = await customDatePicker(
                 context: context,
-                selectedDate: leavingDate,
+                selectedDate: joiningDate,
                 calendarController: calendarController,
                 isJoiningDate: false,
               );

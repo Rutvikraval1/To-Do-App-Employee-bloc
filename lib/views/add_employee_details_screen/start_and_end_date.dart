@@ -118,7 +118,7 @@ class _StartAndEndDateState extends State<StartAndEndDate> {
               widget.focusScopeNode.unfocus();
               final date = await customDatePicker(
                 context: context,
-                selectedDate: leavingDate,
+                selectedDate: joiningDate,
                 calendarController: calendarController,
                 isJoiningDate: false,
               );

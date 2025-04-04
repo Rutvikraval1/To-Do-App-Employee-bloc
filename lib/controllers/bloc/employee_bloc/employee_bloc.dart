@@ -138,6 +138,8 @@ String? isDateValid({
   DateTime? endDate = DateTime.tryParse(dateOfLeaving ?? '');
   DateTime dateData = DateTime.now().toLocal();
   DateTime todaysDate = DateTime(dateData.year, dateData.month, dateData.day);
+  print("endDate : $endDate");
+  print("todaysDate : $todaysDate");
   if (endDate != null) {
     if (startDate.isAfter(endDate)) {
       return 'Joining date cannot be after Leaving date';

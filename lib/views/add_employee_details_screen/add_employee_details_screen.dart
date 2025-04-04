@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app_theme.dart';
+import '../../common/scaffoldWidget.dart';
 import 'cancel_and_save_buttons.dart';
 import 'employee_name_text_field.dart';
 import 'select_role_button.dart';
@@ -51,7 +52,7 @@ class _AddEmployeeDetailsScreenState extends State<AddEmployeeDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold_widget(
       appBar: AppBar(
         backgroundColor: AppTheme.blueDark,
         title: Text(

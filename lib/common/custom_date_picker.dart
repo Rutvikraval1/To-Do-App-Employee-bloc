@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar_null_safe/table_calendar_null_safe.dart';
@@ -113,7 +114,7 @@ Future<DateTime?> customDatePicker({
           horizontal: 16,
         ),
         child: Container(
-          width: double.infinity,
+          width: kIsWeb?MediaQuery.of(context).size.width/3:double.infinity,
           padding: const EdgeInsets.only(
             top: 24,
             left: 16,

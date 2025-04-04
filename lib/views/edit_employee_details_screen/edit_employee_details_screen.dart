@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../app_theme.dart';
+import '../../common/scaffoldWidget.dart';
 import '../../models/employee.model.dart';
 import 'edit_employee_cancel_and_save_buttons.dart';
 import 'edit_employee_name_text_field.dart';
@@ -55,7 +56,7 @@ class _EditEmployeeDetailsScreenState extends State<EditEmployeeDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold_widget(
       appBar: AppBar(
         backgroundColor: AppTheme.blueDark,
         title: Row(

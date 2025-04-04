@@ -5,6 +5,7 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import '../../app_theme.dart';
 import '../../common/generate_key.dart';
+import '../../common/scaffoldWidget.dart';
 import '../../controllers/bloc/employee_bloc/employee_bloc.dart';
 import '../../models/employee.model.dart';
 import '../../routes.dart';
@@ -38,7 +39,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
             .where((employee) => employee.dateOfLeaving.isNotEmpty)
             .toList();
         
-        return Scaffold(
+        return Scaffold_widget(
           backgroundColor: AppTheme.greyLight,
           appBar: AppBar(
             backgroundColor: AppTheme.blueDark,
